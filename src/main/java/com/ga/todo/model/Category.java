@@ -2,7 +2,9 @@ package com.ga.todo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -23,4 +25,12 @@ public class Category {
 
     @Column
     private String description;
+
+    @Column
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @Column
+    @CreationTimestamp
+    private LocalDateTime updatedAt;
 }

@@ -1,9 +1,12 @@
-/*
+
 package com.ga.todo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @AllArgsConstructor
@@ -27,5 +30,17 @@ public class Item {
 
     @Column
     private Date dueDate;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @Column
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
+    @Column
+    @CreationTimestamp
+    private LocalDateTime updatedAt;
 }
-*/

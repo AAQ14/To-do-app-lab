@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import jakarta.persistence.criteria.Fetch;
 import lombok.*;
 
+import java.util.List;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -34,6 +36,12 @@ public class User {
     @OneToOne(cascade= CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     private UserProfile userProfile;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Category> categoryList;
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Item> itemList;
 
     @JsonIgnore
     public String getPassword(){

@@ -1,5 +1,6 @@
 package com.ga.todo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -33,4 +34,9 @@ public class Category {
     @Column
     @CreationTimestamp
     private LocalDateTime updatedAt;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    private User user;
 }

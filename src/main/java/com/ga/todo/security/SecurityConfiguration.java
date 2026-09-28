@@ -20,6 +20,7 @@ public class SecurityConfiguration {
 
     private MyUserDetailsService myUserDetailsService;
 
+    @Bean
     public JwtRequestFilter authenticationJwtTokenFilter() {
         return new JwtRequestFilter();
     }

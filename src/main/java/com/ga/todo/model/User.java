@@ -14,7 +14,7 @@ import java.util.List;
 @Setter
 @Entity
 @Table(name = "users")
-@ToString(exclude = {"password", "userProfile"})
+@ToString(exclude = {"password", "userProfile", "categoryList", "itemList"})
 public class User {
 
     @Id

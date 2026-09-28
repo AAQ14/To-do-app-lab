@@ -12,4 +12,7 @@ public interface ItemRepository extends JpaRepository<Item, Long> {
     Item findByName(String itemName);
     Item findByNameAndDescription(String itemName, String itemDescription);
     List<Item> findByCategoryId(Long categoryId);
+    Item findByUserIdAndName(Long userId, String itemName);
+    List<Item> findByUserId(Long userId);
+    Item findByUserIdAndId(Long userId, Long id);
 }

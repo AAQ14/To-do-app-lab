@@ -10,6 +10,7 @@ package com.ga.todo.security;
 
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.SecurityException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -42,11 +43,11 @@ public class JWTUtils {
                 .getBody().getSubject();
     }
 
-    public boolean validateJwtToken(String authToken){
-        try {
-            Jwts.parser().setSigningKey(jwtSecret).parsePlaintextJws(authToken);
+    public boolean validateJwtToken(String authToken) {
+        try{
+            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;
-        }catch (SecurityException e){
+        } catch (SecurityException e) {
             logger.log(Level.SEVERE, "Invalid JWT Signature: {0}", e.getMessage());
         }
         return false;
